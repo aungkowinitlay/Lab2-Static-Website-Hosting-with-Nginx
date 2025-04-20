@@ -17,7 +17,7 @@
     <script>
     async function getMessage() {
         try {
-            const res = await fetch("http://192.168.100.62:5000/api/message");
+            const res = await fetch("http://192.168.1.2:5000/api/message");
             const data = await res.json();
             document.getElementById("message").innerText = data.message;
         } catch (error) {
