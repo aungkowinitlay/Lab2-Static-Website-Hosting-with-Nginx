@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Nginx</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Hello from Nginx + Docker on Ubuntu!</h1>
+        <p>Your web server is running smoothly.</p>
+
+        <button onclick="getMessage()">Test Backend API</button>
+        <p>Response from backend: <span id="message">[Waiting for API]</span></p>
+    </div>
+
+    <script>
+    async function getMessage() {
+        try {
+            const res = await fetch("http://192.168.100.62:5000/api/message");
+            const data = await res.json();
+            document.getElementById("message").innerText = data.message;
+        } catch (error) {
+            document.getElementById("message").innerText = "Error contacting backend";
+            console.error(error);
+        }
+    }
+    </script>
+</body>
+</html>
